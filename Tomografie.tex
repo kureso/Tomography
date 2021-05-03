@@ -1,6 +1,7 @@
 \documentclass{beamer}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{animate}
 \usepackage{physics}
 \usepackage{amsthm}
 \usepackage{graphicx}
@@ -32,10 +33,39 @@ Překvapivě, zde je 2. stránka této prezentace. Sem bychom mohli vložit Rado
 \end{frame}
 \begin{frame}
 \frametitle{Použití Radonovy transformace - Přímka}
-Pro ty, co to nečekali, zde je 3. stránka této prezentace. Sem vložíme (pochopitelně) Radonovo transformaci přímky.
+\begin{figure}
+\begin{columns}
+\column{.5\textwidth}
+	\animategraphics[loop,autoplay,width=\linewidth]{5}{lines-}{0}{20}
+\column{.5\textwidth}
+	\animategraphics[loop,autoplay,width=\linewidth]{5}{sino-}{0}{20}
+	 \label{fig:sub3}
+\end{columns}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Použití Radonovy transformace - Přímky v obraze}
+\begin{figure}
+\begin{columns}
+\column{.5\textwidth}
+	  \includegraphics[width=\linewidth]{house.png}
+\column{.5\textwidth}
+	  \includegraphics[width=\linewidth]{sinohouse.png}
+	 \label{fig:sub4}
+\end{columns}
+\end{figure}
+Podle barevného rozlišení lze určit:
+\begin{itemize}
+\item Svislé přímky okolo středu
+\item Vodorovné vycházejí z okrajů
+\end{itemize}
 \end{frame}
 \begin{frame}
 \frametitle{Inverzní Radonova transformace}
+\begin{itemize}
+\item Pomocí Fourierovy transformace - přes (jednodimenziální) vrstvu - nepoužíváno v praxi
+\item Taktéž přes Fourierovu transformaci:
+\end{itemize}
 \begin{equation}
 f(\vec{x})=  \int_{\theta=0}^{\pi}
 	\left\lbrace
@@ -49,7 +79,17 @@ f(\vec{x})=  \int_{\theta=0}^{\pi}
 	_{\xi = \vec{x}\cdot\vec{\theta}}
 	\,d\theta
 \end{equation}
-Ano, nikdo to neočekával, toto je 4. stránka této prezentace. Stejně jako jsme měli definici Radonovy transformace na začátku, tak stejným způsobem bychom sem mohli dát definici inverzní Radonovy transformace.
+Kde $\mathcal{H}$ představuje Hilbertovu transformaci. Výsledný vzorec v praxi též nepoužíván kvůli náročnosti výpočtu.
+\begin{itemize}
+\item V praxi aproximace: metoda filtrované zpězné projekce
+\end{itemize}
+ \begin{equation}
+   	\mathcal{F}^{-1}_{\nu \to \xi}\left[|{\nu}|\mathcal{F}_{\nu \to \xi}\left[\mathcal{R}f\right]\right]
+	\approx
+    \sqrt{\frac{2}{\pi}}
+    \left(W\frac{\sin\left(\xi W\right)}{\xi}
+      +\frac{\cos \left( \xi W \right)}{\xi ^2}-\frac{1}{\xi^2}\right)*\mathcal{R}f	
+\end{equation}
 \end{frame}
 
 \begin{frame}
