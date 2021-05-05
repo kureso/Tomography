@@ -8,9 +8,10 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \graphicspath{ {./figures/} }
+\newcommand{\vectordot}[2]{\ensuremath{#1 \bullet #2}}
 \title{Tomografie a Radonova transformace}
 \author{Dominika Hájková, Matyáš Fuksa, Ondřej Kureš}
-\institute{Skupina W}
+\institute{Stormtrooperz}
 \date{2021}
 
 \begin{document}
@@ -18,19 +19,29 @@
 \frame{\titlepage}
 
 \begin{frame}
-\frametitle{Radonova transformace}
-\begin{equation}
+\frametitle{Definice Radonovy transformace}
+\begin{equation*}
 \mathcal{R}[f(\vec{x})](\rho, \theta)=_{def} \int_{-\infty}^{+\infty}f(s \vec{\theta}^\perp + \rho \vec{\theta}) \,ds
-\end{equation}
-\begin{equation}
+\end{equation*}
+Což je v podstatě křivkový integrál s parametrizací křivky: $\vec{x} = s \vec{\theta}^\perp + \rho \vec{\theta}$ \\
+Ten se, za použití implicitiního popisu křivky $ \vectordot{\vec{x}}{\vec{\theta}} - \rho = 0$ a Diracovy delta funkce, dá přepsat do více kryptického, ale užitečnějšího, tvaru: 
+\begin{equation*}
 \mathcal{R}[f(\vec{x})](\rho, \theta)=_{def} \int_{\vec{x}\in \mathbb{R}^2}f(\vec{x})\delta \left(\vec{x}\cdot\vec{\theta} - \rho\right) \,dv_{\vec{x}} 
-\end{equation}
-Ano, zde je 1. stránka této prezentace. Zde vložíme definici Radonovy transformace (nic moc složitého).
+\end{equation*}
 \end{frame}
+
 \begin{frame}
 \frametitle{Použití Radonovy transformace - Bod}
-Překvapivě, zde je 2. stránka této prezentace. Sem bychom mohli vložit Radonovo transformaci bodu.
+\begin{figure}
+\begin{columns}
+\column{.5\textwidth}
+	  \includegraphics[width=\linewidth]{body.png}
+\column{.5\textwidth}
+	  \includegraphics[width=\linewidth]{body2.pdf}
+\end{columns}
+\end{figure}
 \end{frame}
+
 \begin{frame}
 \frametitle{Použití Radonovy transformace - Přímka}
 \begin{figure}
@@ -43,6 +54,7 @@ Překvapivě, zde je 2. stránka této prezentace. Sem bychom mohli vložit Rado
 \end{columns}
 \end{figure}
 \end{frame}
+
 \begin{frame}
 \frametitle{Použití Radonovy transformace - Přímky v obraze}
 \begin{figure}
@@ -60,13 +72,14 @@ Podle barevného rozlišení lze určit:
 \item Vodorovné vycházejí z okrajů
 \end{itemize}
 \end{frame}
+
 \begin{frame}
 \frametitle{Inverzní Radonova transformace}
 \begin{itemize}
 \item Pomocí Fourierovy transformace - přes (jednodimenziální) vrstvu - nepoužíváno v praxi
 \item Taktéž přes Fourierovu transformaci:
 \end{itemize}
-\begin{equation}
+\begin{equation*}
 f(\vec{x})=  \int_{\theta=0}^{\pi}
 	\left\lbrace
 		\mathcal{H}_{\rho \to \xi}
@@ -78,18 +91,18 @@ f(\vec{x})=  \int_{\theta=0}^{\pi}
 	\right\rbrace
 	_{\xi = \vec{x}\cdot\vec{\theta}}
 	\,d\theta
-\end{equation}
+\end{equation*}
 Kde $\mathcal{H}$ představuje Hilbertovu transformaci. Výsledný vzorec v praxi též nepoužíván kvůli náročnosti výpočtu.
 \begin{itemize}
 \item V praxi aproximace: metoda filtrované zpězné projekce
 \end{itemize}
- \begin{equation}
+ \begin{equation*}
    	\mathcal{F}^{-1}_{\nu \to \xi}\left[|{\nu}|\mathcal{F}_{\nu \to \xi}\left[\mathcal{R}f\right]\right]
 	\approx
     \sqrt{\frac{2}{\pi}}
     \left(W\frac{\sin\left(\xi W\right)}{\xi}
       +\frac{\cos \left( \xi W \right)}{\xi ^2}-\frac{1}{\xi^2}\right)*\mathcal{R}f	
-\end{equation}
+\end{equation*}
 \end{frame}
 
 \begin{frame}
